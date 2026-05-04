@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { FormState } from "@/lib/definitions";
+import { FormState, FormErrors } from "@/lib/definitions";
 
 function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -23,7 +23,7 @@ export async function loginAction(
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  const errors: FormState["errors"] = {};
+  const errors: FormErrors = {};
 
   if (!email || !validateEmail(email)) {
     errors.email = ["Ingresa un email válido"];
@@ -51,7 +51,7 @@ export async function registerAction(
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  const errors: FormState["errors"] = {};
+  const errors: FormErrors = {};
 
   if (!name || name.trim().length < 2) {
     errors.name = ["El nombre debe tener al menos 2 caracteres"];
@@ -78,8 +78,6 @@ export async function registerAction(
     return { message: error.message };
   }
 
-  // Supabase may require email confirmation depending on your project settings.
-  // If email confirmation is disabled, the user is logged in immediately.
   redirect("/dashboard");
 }
 

@@ -1,10 +1,12 @@
+export type FormErrors = {
+  name?: string[];
+  email?: string[];
+  password?: string[];
+};
+
 export type FormState =
   | {
-      errors?: {
-        name?: string[];
-        email?: string[];
-        password?: string[];
-      };
+      errors?: FormErrors;
       message?: string;
     }
   | undefined;

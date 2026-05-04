@@ -4,14 +4,13 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
+type ClientErrors = {
+  name?: string[];
+  email?: string[];
+};
+
 type ClientFormState =
-  | {
-      errors?: {
-        name?: string[];
-        email?: string[];
-      };
-      message?: string;
-    }
+  | { errors?: ClientErrors; message?: string }
   | undefined;
 
 export async function saveClientAction(
@@ -24,7 +23,7 @@ export async function saveClientAction(
   const company = (formData.get("company") as string).trim();
   const status = formData.get("status") as string;
 
-  const errors: ClientFormState["errors"] = {};
+  const errors: ClientErrors = {};
 
   if (!name || name.length < 2) {
     errors.name = ["El nombre debe tener al menos 2 caracteres"];

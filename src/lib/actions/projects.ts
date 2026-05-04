@@ -4,14 +4,13 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
+type ProjectErrors = {
+  name?: string[];
+  budget?: string[];
+};
+
 type ProjectFormState =
-  | {
-      errors?: {
-        name?: string[];
-        budget?: string[];
-      };
-      message?: string;
-    }
+  | { errors?: ProjectErrors; message?: string }
   | undefined;
 
 export async function saveProjectAction(
@@ -24,7 +23,7 @@ export async function saveProjectAction(
   const status = formData.get("status") as string;
   const budget = Number(formData.get("budget"));
 
-  const errors: ProjectFormState["errors"] = {};
+  const errors: ProjectErrors = {};
 
   if (!name || name.length < 2) {
     errors.name = ["El nombre debe tener al menos 2 caracteres"];
@@ -36,7 +35,6 @@ export async function saveProjectAction(
 
   const supabase = await createClient();
 
-  // Verify the user is authenticated before mutating data
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return { message: "No autorizado" };
 
@@ -45,7 +43,7 @@ export async function saveProjectAction(
       .from("projects")
       .update({ name, description, status, budget })
       .eq("id", id)
-      .eq("user_id", user.id); // RLS: only update own rows
+      .eq("user_id", user.id);
 
     if (error) return { message: error.message };
   } else {
@@ -70,7 +68,7 @@ export async function deleteProjectAction(id: string): Promise<void> {
     .from("projects")
     .delete()
     .eq("id", id)
-    .eq("user_id", user.id); // RLS: only delete own rows
+    .eq("user_id", user.id);
 
   revalidatePath("/dashboard/projects");
 }
