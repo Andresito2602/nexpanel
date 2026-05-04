@@ -29,14 +29,11 @@ Está pensado para mostrar dominio del stack **Next.js App Router + Supabase** c
 
 | Landing Page | Login | Dashboard |
 |---|---|---|
-| ![Landing](https://placehold.co/400x250/6366f1/ffffff?text=Landing+Page) | ![Login](https://placehold.co/400x250/6366f1/ffffff?text=Login) | ![Dashboard](https://placehold.co/400x250/6366f1/ffffff?text=Dashboard) |
+| ![Landing](public/screenshots/landing.png) | ![Login](public/screenshots/login.png) | ![Dashboard](public/screenshots/dashboard.png) |
 
 | Proyectos | Clientes | Facturas |
 |---|---|---|
-| ![Proyectos](https://placehold.co/400x250/6366f1/ffffff?text=Proyectos) | ![Clientes](https://placehold.co/400x250/6366f1/ffffff?text=Clientes) | ![Facturas](https://placehold.co/400x250/6366f1/ffffff?text=Facturas) |
-
-> **Nota:** reemplaza estas imágenes con capturas reales del proyecto.  
-> Puedes subirlas a la carpeta `/public/screenshots/` y actualizar las rutas.
+| ![Proyectos](public/screenshots/proyectos.png) | ![Clientes](public/screenshots/clientes.png) | ![Facturas](public/screenshots/facturas.png) |
 
 ---
 
