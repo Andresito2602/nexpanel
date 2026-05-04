@@ -11,7 +11,7 @@
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 
-[**Ver Demo →**](https://nexpanel.vercel.app) &nbsp;·&nbsp; [Reportar un bug](https://github.com/Andresito2602/nexpanel/issues)
+[**Ver Demo →**](https://nexpanel-one.vercel.app) &nbsp;·&nbsp; [Reportar un bug](https://github.com/Andresito2602/nexpanel/issues)
 
 </div>
 
@@ -156,7 +156,7 @@ Abre [http://localhost:3000](http://localhost:3000) y regístrate para empezar.
 2. Añade las variables de entorno (`NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`)
 3. Deploy — Vercel detecta Next.js automáticamente
 
-**Demo en producción:** [https://nexpanel.vercel.app](https://nexpanel.vercel.app)
+**Demo en producción:** [https://nexpanel-one.vercel.app](https://nexpanel-one.vercel.app)
 
 ---
 
